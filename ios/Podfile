@@ -12,6 +12,8 @@ target 'TorusCustomAuthSamples' do
     :hermes_enabled => false
   )
 
+  use_modular_headers!
+
   target 'TorusCustomAuthSamplesTests' do
     inherit! :complete
     # Pods for testing

@@ -31,7 +31,8 @@ const Section = ({children, title}): Node => {
           {
             color: isDarkMode ? Colors.white : Colors.black,
           },
-        ]}>
+        ]}
+      >
         {title}
       </Text>
       {children}
@@ -46,7 +47,8 @@ const Description = ({children}): Node => {
       style={[
         styles.sectionDescription,
         {color: isDarkMode ? Colors.light : Colors.dark},
-      ]}>
+      ]}
+    >
       {children}
     </Text>
   );
@@ -81,6 +83,7 @@ const App: () => Node = () => {
         typeOfLogin: verifier.typeOfLogin,
         verifier: verifier.id,
         clientId: verifier.clientId,
+        jwtParams: verifier.jwtParams,
       });
       setResult(
         `Address:\n${credentials.publicAddress}\n\nPrivate key:\n${credentials.privateKey}`,
@@ -135,12 +138,14 @@ const App: () => Node = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+        style={backgroundStyle}
+      >
         <Text style={styles.title}>Torus CustomAuth Samples</Text>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
+          }}
+        >
           <Section title="Single-Verifier Login">
             <Picker selectedValue={verifier} onValueChange={setVerifier}>
               {VERIFIERS.map(verifier => (
